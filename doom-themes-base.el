@@ -322,7 +322,7 @@
     (company-box-candidate :foreground fg)
     ;;;; corfu
     (corfu-default :inherit 'tooltip)
-    (corfu-current :background bg :foreground fg)
+    (corfu-current :inherit 'region)
     ;;;; circe
     (circe-fool :foreground doc-comments)
     (circe-highlight-nick-face :weight 'bold :foreground constants)
