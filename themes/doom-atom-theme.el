@@ -16,30 +16,30 @@
 
 ;;; Variables
 
-(defgroup doom-deep-atom-theme nil
-  "Options for the `doom-deep-atom' theme."
+(defgroup doom-atom-theme nil
+  "Options for the `doom-atom' theme."
   :group 'doom-themes)
 
-(defcustom doom-deep-atom-brighter-modeline nil
+(defcustom doom-atom-brighter-modeline nil
   "If non-nil, more vivid colors will be used to style the mode-line."
-  :group 'doom-deep-atom-theme
+  :group 'doom-atom-theme
   :type 'boolean)
 
-(defcustom doom-deep-atom-brighter-comments nil
+(defcustom doom-atom-brighter-comments nil
   "If non-nil, comments will be highlighted in more vivid colors."
-  :group 'doom-deep-atom-theme
+  :group 'doom-atom-theme
   :type 'boolean)
 
-(defcustom doom-deep-atom-padded-modeline doom-themes-padded-modeline
+(defcustom doom-atom-padded-modeline doom-themes-padded-modeline
   "If non-nil, adds a 4px padding to the mode-line.
 Can be an integer to determine the exact padding."
-  :group 'doom-deep-atom-theme
+  :group 'doom-atom-theme
   :type '(choice integer boolean))
 
 
 ;;; Theme definition
 
-(def-doom-theme doom-deep-atom
+(def-doom-theme doom-atom
                 "A dark theme inspired by Atom One Dark."
                 ;; name        default   256           16
                 ((bg         '("#282c34" "#282c34"     "black"        ))
@@ -78,8 +78,8 @@ Can be an integer to determine the exact padding."
                  (vertical-bar   (doom-darken base1 0.1))
                  (selection      dark-blue)
                  (builtin        blue)
-                 (comments       (if doom-deep-atom-brighter-comments dark-cyan base5))
-                 (doc-comments   (doom-lighten (if doom-deep-atom-brighter-comments dark-cyan base5) 0.25))
+                 (comments       (if doom-atom-brighter-comments dark-cyan base5))
+                 (doc-comments   (doom-lighten (if doom-atom-brighter-comments dark-cyan base5) 0.25))
                  (constants      red)
                  (functions      blue)
                  (keywords       violet)
@@ -101,39 +101,39 @@ Can be an integer to determine the exact padding."
                  ;; mandatory for derived themes.
                  (modeline-fg              fg)
                  (modeline-fg-alt          base5)
-                 (modeline-bg              (if doom-deep-atom-brighter-modeline
+                 (modeline-bg              (if doom-atom-brighter-modeline
                                                (doom-darken blue 0.45)
                                              (doom-darken bg-alt 0.1)))
-                 (modeline-bg-alt          (if doom-deep-atom-brighter-modeline
+                 (modeline-bg-alt          (if doom-atom-brighter-modeline
                                                (doom-darken blue 0.475)
                                              `(,(doom-darken (car bg-alt) 0.15) ,@(cdr bg))))
                  (modeline-bg-inactive     `(,(car bg-alt) ,@(cdr base1)))
                  (modeline-bg-inactive-alt `(,(doom-darken (car bg-alt) 0.1) ,@(cdr bg)))
 
                  (-modeline-pad
-                  (when doom-deep-atom-padded-modeline
-                    (if (integerp doom-deep-atom-padded-modeline) doom-doom-deep-atom-one-dark-padded-modeline 4))))
+                  (when doom-atom-padded-modeline
+                    (if (integerp doom-atom-padded-modeline) doom-doom-atom-one-dark-padded-modeline 4))))
 
 
   ;;;; Base theme face overrides
                 (((line-number &override) :foreground base4)
                  ((line-number-current-line &override) :foreground fg)
                  ((font-lock-comment-face &override)
-                  :background (if doom-deep-atom-brighter-comments (doom-lighten bg 0.05)))
+                  :background (if doom-atom-brighter-comments (doom-lighten bg 0.05)))
                  (mode-line
                   :background modeline-bg :foreground modeline-fg
                   :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg)))
                  (mode-line-inactive
                   :background modeline-bg-inactive :foreground modeline-fg-alt
                   :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive)))
-                 (mode-line-emphasis :foreground (if doom-deep-atom-brighter-modeline base8 highlight))
+                 (mode-line-emphasis :foreground (if doom-atom-brighter-modeline base8 highlight))
 
    ;;;; css-mode <built-in> / scss-mode
                  (css-proprietary-property :foreground orange)
                  (css-property             :foreground green)
                  (css-selector             :foreground blue)
    ;;;; doom-modeline
-                 (doom-modeline-bar :background (if doom-deep-atom-brighter-modeline modeline-bg highlight))
+                 (doom-modeline-bar :background (if doom-atom-brighter-modeline modeline-bg highlight))
                  (doom-modeline-buffer-file :inherit 'mode-line-buffer-id :weight 'bold)
                  (doom-modeline-buffer-path :inherit 'mode-line-emphasis :weight 'bold)
                  (doom-modeline-buffer-project-root :foreground green :weight 'bold)
@@ -167,5 +167,5 @@ Can be an integer to determine the exact padding."
   ;;;; Base theme variable overrides-
                 ())
 
-(provide 'doom-deep-atom-theme)
-;;; doom-deep-atom-theme.el ends here
+(provide 'doom-atom-theme)
+;;; doom-atom-theme.el ends here
